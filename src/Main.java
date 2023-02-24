@@ -4,7 +4,8 @@ public class Main {
         MagicBox mb = new MagicBox(3);
         mb.add("Whitcher");
         mb.add("Whitch");
-        mb.pick();
+        mb.add("Wolf");
+        System.out.print(mb.pick());
 
 
 

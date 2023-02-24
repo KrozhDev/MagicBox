@@ -1,35 +1,49 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class MagicBox<T> {
 
+    private boolean checkArr(Object[] array) {
+        for (int index = 0; index < array.length; index++) {
+            if (items[index] == null) {
+                return true;
+            }
+        } return false;
+
+    }
+
+
+
+
     private int howManyItems;
-    private List<T> items;
+    private T[] items;
 
 
     public MagicBox(int howManyItems) {
         this.howManyItems = howManyItems;
-        items = new ArrayList<>(howManyItems);
+        items = (T[]) new Object[howManyItems];
     }
         
     public boolean add(T item){
-        if (items.size() < howManyItems) {
-            this.items.add(item);
-            return true;
-        } else {
-            return false;
-        }
+
+            for (int index = 0; index < items.length; index++) {
+                if (items[index] == null) {
+                    items[index] = item;
+                    return true;
+                }
+            } return false;
+
     }
 
     public T pick() {
-        if (this.items.size() < howManyItems) {
-            throw new RuntimeException("This box still has " + (howManyItems - this.items.size()) + " cell(s)");
-        } else {
-            Random random = new Random();
-            int randomInt = random.nextInt(howManyItems);
-            return this.items.get(randomInt);
+        int counter = 0;
+        for (int index = 0; index < items.length; index++) {
+            if (items[index] == null) {
+                throw new RuntimeException("This box still has " + (howManyItems - counter) + " cell(s)");
+            } else counter++;
         }
+        Random random = new Random();
+        int randomInt = random.nextInt(howManyItems);
+        return (T) this.items[randomInt];
     }
 
 }
