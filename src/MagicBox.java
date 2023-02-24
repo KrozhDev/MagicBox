@@ -11,9 +11,6 @@ public class MagicBox<T> {
 
     }
 
-
-
-
     private int howManyItems;
     private T[] items;
 
