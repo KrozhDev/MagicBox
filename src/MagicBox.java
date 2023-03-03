@@ -2,15 +2,6 @@ import java.util.Random;
 
 public class MagicBox<T> {
 
-    private boolean checkArr(Object[] array) {
-        for (int index = 0; index < array.length; index++) {
-            if (items[index] == null) {
-                return true;
-            }
-        } return false;
-
-    }
-
     private int howManyItems;
     private T[] items;
 
